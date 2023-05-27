@@ -1,0 +1,34 @@
+# seed random numbers
+import random
+
+# have user input bounds
+lower = int(input('What is the lower bound?\n'))
+upper = int(input('What is the upper bound?\n'))
+
+# bound input validation
+while lower >= upper:
+    print('The lower bound must be less than the upper bound.')
+    lower = int(input('What is the lower bound?\n'))
+    upper = int(input('What is the upper bound?\n'))
+
+# set right answer
+right_answer = random.randint(lower, upper)
+
+# have user input guess between bounds
+player_guess = int(input('What is your guess?\n'))
+
+# input validation for guess in bounds
+while player_guess not in range(lower, upper + 1):
+    print('Please try again! Guess must be within bounds.')
+    player_guess = int(input('What is your guess?\n'))
+
+# set while loop for guess less/greater/equal to right answer
+while player_guess != right_answer:
+    if player_guess < right_answer:
+        print('Nope, too low.')
+    elif player_guess > right_answer:
+        print('Nope, too high.')
+    player_guess = int(input('What is your guess?\n'))
+
+else:
+    print('You got it!')
